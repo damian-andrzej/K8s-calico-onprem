@@ -1,15 +1,48 @@
-1. VMs 1 for cluster 2 for workernodes
-    Network interfaces in bridge mode
-    we need to ensure ens33 interface gets bridge IP every time
-    ad1. create a file /etc/systemd/networkd/10-ens33.network where ens33 is your int name
-    ad2. enable networkd during boot - systemctl enable systemd-networkd
-    ad3 disable swap - swapoff -a i edit /etc/fstab - comment out swap line
-   
-   
-3. Install kubeadm on master node
-4. init a cluster
-5. join worker nodes to cluster
-6. validate
-7. install argocd
+# Kubernetes Cluster Setup with Kubeadm (VM-Based)
 
-8. 
+This repository provides step-by-step instructions and a setup script to deploy a **Kubernetes cluster** using **kubeadm** on **3 Ubuntu VMs**:
+
+- **1 Master Node**
+- **2 Worker Nodes**
+- All VMs use **bridge-mode networking** with interface `ens33`
+
+---
+
+##  Prerequisites
+
+- 3 Ubuntu virtual machines
+- All VMs should use bridged networking
+- You have `sudo` access on all machines
+- Internet access is available on the VMs
+
+---
+
+## Files in This Repository
+
+- `k8s-cluster-setup.sh` – Script to configure and deploy Kubernetes components
+
+---
+
+##  Setup Overview
+
+### Network Configuration (All Nodes)
+
+Ensure `ens33` (or your interface name) gets a bridged IP every time:
+
+```ini
+# /etc/systemd/network/10-ens33.network
+[Match]
+Name=ens33
+
+[Network]
+DHCP=yes
+```
+
+## Validation
+
+Check kube api connection to master and worker nodes - those commands displays all the existing pods and its state 
+
+```bash
+kubectl get nodes
+kubectl get pods -A
+```
