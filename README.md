@@ -11,3 +11,5 @@
 5. join worker nodes to cluster
 6. validate
 7. install argocd
+
+8. 
