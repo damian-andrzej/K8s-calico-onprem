@@ -46,3 +46,5 @@ Check kube api connection to master and worker nodes - those commands displays a
 kubectl get nodes
 kubectl get pods -A
 ```
+
+![Alt Text](images/podesnodes.png)
