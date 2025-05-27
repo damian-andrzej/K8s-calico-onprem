@@ -13,7 +13,7 @@ This repository provides step-by-step instructions and a setup script to deploy 
 - 3 Ubuntu virtual machines
 - All VMs should use bridged networking
 - You have `sudo` access on all machines
-- Internet access is available on the VMs
+- Internet access is available on the VM
 
 ---
 
